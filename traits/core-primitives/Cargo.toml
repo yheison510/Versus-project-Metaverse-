@@ -1,0 +1,30 @@
+[package]
+authors = ['Metaverse Network <https://github.com/bit-country>']
+description = 'Core Primitives for Metaverse Network pallets'
+edition = '2021'
+homepage = 'https://metaverse.network'
+license = 'Unlicense'
+name = 'core-primitives'
+repository = 'https://github.com/bit-country'
+version = '2.0.0-rc6'
+
+[dependencies]
+serde = { workspace = true }
+codec = { workspace = true, package = "parity-scale-codec" }
+sp-runtime = { workspace = true }
+sp-std = { workspace = true }
+frame-support = { workspace = true }
+primitives = { package = "bit-country-primitives", path = "../../primitives/metaverse", default-features = false }
+scale-info = { workspace = true }
+
+[features]
+default = ['std']
+std = [
+    'serde/std',
+    'primitives/std',
+    'codec/std',
+    'sp-runtime/std',
+    'sp-std/std',
+    'frame-support/std',
+    'scale-info/std'
+]

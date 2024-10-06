@@ -1,0 +1,28 @@
+[package]
+name = "module-support"
+version = "2.0.0-rc6"
+edition = "2021"
+
+[dependencies]
+impl-trait-for-tuples = { workspace = true }
+codec = { workspace = true, package = "parity-scale-codec" }
+sp-runtime = { workspace = true }
+frame-support = { workspace = true }
+sp-std = { workspace = true }
+sp-core = { workspace = true }
+sp-io = { workspace = true }
+primitives = { package = 'bit-country-primitives', path = '../../primitives/metaverse', default-features = false }
+xcm = { workspace = true }
+
+[features]
+default = ["std"]
+std = [
+	"codec/std",
+	"sp-runtime/std",
+	"sp-core/std",
+	"sp-std/std",
+	"sp-io/std",
+	"frame-support/std",
+	"primitives/std",
+	"xcm/std",
+]

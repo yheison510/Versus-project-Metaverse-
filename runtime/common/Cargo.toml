@@ -1,0 +1,111 @@
+[package]
+name = "metaverse-runtime-common"
+description = "Common code shared between runtimes"
+version = "0.0.1"
+edition = "2021"
+
+[dependencies]
+codec = { workspace = true }
+serde = { workspace = true, default-features = false, optional = true }
+scale-info = { workspace = true }
+impl-trait-for-tuples = { workspace = true }
+log = { workspace = true }
+num_enum = { workspace = true }
+hex-literal = { workspace = true }
+
+# Substrate
+frame-support = { workspace = true }
+frame-system = { workspace = true }
+sp-core = { workspace = true }
+sp-runtime = { workspace = true }
+sp-std = { workspace = true }
+sp-io = { workspace = true }
+pallet-proxy = { workspace = true }
+
+# Polkadot & Cumulus pallets
+polkadot-parachain = { workspace = true }
+cumulus-pallet-parachain-system = { workspace = true, default-features = false }
+
+# FRAME pallets
+pallet-timestamp = { workspace = true }
+pallet-balances = { workspace = true }
+
+# EVM pallets
+pallet-evm = { workspace = true }
+pallet-evm-precompile-blake2 = { workspace = true }
+pallet-evm-precompile-bn128 = { workspace = true }
+pallet-evm-precompile-dispatch = { workspace = true }
+pallet-evm-precompile-ed25519 = { workspace = true }
+pallet-evm-precompile-modexp = { workspace = true }
+pallet-evm-precompile-sha3fips = { workspace = true }
+pallet-evm-precompile-simple = { workspace = true }
+
+# XCM pallets
+xcm = { workspace = true }
+xcm-executor = { workspace = true }
+xcm-builder = { workspace = true }
+
+# external crates - orml packages
+orml-currencies = { workspace = true }
+orml-tokens = { workspace = true }
+orml-traits = { workspace = true }
+orml-nft = { workspace = true }
+
+# metaverse dependencies
+primitives = { package = "bit-country-primitives", path = "../../primitives/metaverse", default-features = false }
+core-primitives = { path = "../../traits/core-primitives", default-features = false }
+precompile-utils = { path = "../../primitives/precompiles", default-features = false }
+precompile-utils-macro = { path = "../../primitives/precompiles/macro", default-features = false }
+currencies_pallet = { package = "currencies", path = "../../pallets/currencies", version = "2.0.0-rc6", default-features = false }
+evm-mapping = { package = "pallet-evm-mapping", path = "../../pallets/evm-mapping", version = "2.0.0-rc6", default-features = false }
+nft_pallet = { package = "pallet-nft", path = "../../pallets/nft", version = "2.0.0-rc6", default-features = false }
+auction-manager = { package = "auction-manager", path = "../../traits/auction-manager", default-features = false }
+asset-manager = { path = "../../pallets/asset-manager", default-features = false }
+
+[build-dependencies]
+substrate-wasm-builder = { workspace = true }
+
+[features]
+default = ["std"]
+std = [
+    "codec/std",
+    "scale-info/std",
+    "num_enum/std",
+    "serde",
+    "sp-core/std",
+    "sp-runtime/std",
+    "sp-std/std",
+    "sp-io/std",
+    "log/std",
+    "frame-support/std",
+    "frame-system/std",
+    "cumulus-pallet-parachain-system/std",
+    "polkadot-parachain/std",
+    "pallet-evm/std",
+    "pallet-evm-precompile-blake2/std",
+    "pallet-evm-precompile-simple/std",
+    "pallet-evm-precompile-bn128/std",
+    "pallet-evm-precompile-dispatch/std",
+    "pallet-evm-precompile-ed25519/std",
+    "pallet-evm-precompile-modexp/std",
+    "pallet-evm-precompile-sha3fips/std",
+    "orml-currencies/std",
+    "orml-traits/std",
+    "orml-tokens/std",
+    "orml-nft/std",
+    "primitives/std",
+    "core-primitives/std",
+    "precompile-utils/std",
+    "currencies_pallet/std",
+    "nft_pallet/std",
+    "asset-manager/std",
+    "auction-manager/std",
+    "evm-mapping/std",
+    "xcm/std",
+    "xcm-executor/std",
+    "xcm-builder/std",
+    "pallet-timestamp/std",
+    "pallet-balances/std",
+    "pallet-proxy/std",
+]
+with-precompile-tests = ["precompile-utils/testing"]
